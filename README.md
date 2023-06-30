@@ -1,4 +1,5 @@
 # ngx-guided-tour
+
 Guided tour component using SASS and typescript. Allows you to use selectors to step your user through workflows and introduce them to your application. Customiziable theme and many features. Heavily inspired by [react-joyride](https://github.com/gilbarbara/react-joyride)
 
 See a quick demo - [https://lsqlabs.github.io/ngx-guided-tour/](https://lsqlabs.github.io/ngx-guided-tour/)
@@ -7,9 +8,10 @@ See a quick demo - [https://lsqlabs.github.io/ngx-guided-tour/](https://lsqlabs.
 
 1. Install npm module:
 
-    `npm install ngx-guided-tour --save`
+    `npm install ngx-guided-tour-v14 --save`
 
 2. Add modules to app.module.ts
+
 ```typescript
 import {GuidedTourModule, GuidedTourService} from 'ngx-guided-tour';
 
@@ -27,7 +29,7 @@ import {GuidedTourModule, GuidedTourService} from 'ngx-guided-tour';
 ## Usage
 
 Add ngx-guided-tour to your app.component.html .
-    
+
 ```html
 <ngx-guided-tour></ngx-guided-tour>
 ```
@@ -37,6 +39,7 @@ Add guided-tour-base-theme.scss to your main style import page. If you want to c
 ```scss
 @import '../node_modules/ngx-guided-tour/scss/guided-tour-base-theme.scss';
 ```
+
 Define your tour using the GuidedTour type:
 
 ```typescript
@@ -59,11 +62,12 @@ interface GuidedTour {
         title?: string;
         /** Resize dialog text */
         content: string;
-    }
+    };
 }
 ```
 
 and steps:
+
 ```typescript
 interface TourStep {
     /** Selector for element that will be highlighted */
@@ -90,12 +94,13 @@ interface TourStep {
 ```
 
 Orientation configuration:
+
 ```typescript
 interface OrientationConfiguration {
     /** Where the tour step will appear next to the selected element */
-    orientationDirection: Orientation,
+    orientationDirection: Orientation;
     /** When this orientation configuration starts in pixels */
-    maximumSize?: number
+    maximumSize?: number;
 }
 ```
 
@@ -104,10 +109,12 @@ Then use the `GuidedTourService` to to start your tour by calling `GuidedTourSer
 If a selector is not found, the step will be skipped.
 
 ## Publishing Updates to npm
+
 1. Make sure you are logged in via cli to the npm account that owns the package (if you work at LSQ Funding, check the 1Password vault).
 2. Increment the version number in [projects/ngx-guided-tour/package.json](https://github.com/lsqlabs/ngx-guided-tour/blob/master/projects/ngx-guided-tour/package.json) appropriately.
-2. `npm run build:lib`
-3. `npm run publish`
+3. `npm run build:lib`
+4. `npm run publish`
+
 ## TourStep Interface
 
 selector (optional) - If no selector is present then the tour will show a step in the middle of the page. If a selector is set but not found, it will skip the step.
@@ -163,11 +170,11 @@ backText (optional) - The text of the back button.
 progressIndicatorLocation (optional) - The location of the progress indicator (e.g. "1/5"). It can be placed inside the next button (default), at the top of the tour block or hidden. If set to ProgressIndicatorLocation.TopOfTourBlock the indicator will be shown on all steps. If it's shown inside the next button, it will be hidden on the last step.
 
 progressIndicator (optional) - A ng-template to customize the progress indicator (e.g. "1/5"). The following context is provided:  
-    - currentStepNumber: The number of the current step (starting with 1)  
-    - totalSteps: The total number of steps
-
+ - currentStepNumber: The number of the current step (starting with 1)  
+ - totalSteps: The total number of steps
 
 ## Style variables
+
 These SASS variables have default values, but they can be set to customize the tour elements. Define them before importing guided-tour-base-theme.scss .
 
 $tour-skip-link-color : Skip button color.
